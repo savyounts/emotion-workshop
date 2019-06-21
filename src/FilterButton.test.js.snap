@@ -1,0 +1,15 @@
+import React from 'react'
+import renderer from 'react-test-renderer'
+import serializer from 'jest-emotion'
+import FilterButton from './FilterButton'
+
+expect.addSnapshotSerializer(serializer)
+
+test('renders a FilterButton', () => {
+  const component = renderer
+  .create(<FilterButton onClick={jest.fn()} />)
+  .toJSON()
+
+
+expect(component).toMatchSnapshot()
+})

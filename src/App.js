@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
 import './App.css'
+import Header from './Header.js'
+import FilterButton, {ButtonTypes} from './FilterButton'
 
 import { ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS } from './constants'
 import NewTodo from './NewTodo'
@@ -85,7 +87,7 @@ function App() {
       <section className="todoapp">
         <div>
           <header className="header">
-            <h1>todos</h1>
+            <Header color={todos.length > 5 ? 'red' : 'blue'}/>
             <NewTodo onInsert={onInsert} />
           </header>
 
@@ -121,31 +123,30 @@ function App() {
             </span>
             <ul className="filters">
               <li>
-                <a
+                <FilterButton
                   href="#/"
-                  className="selected"
+                  text="All"
+                  buttonType= {ButtonTypes.default}
                   onClick={() => setFilter(ALL_TODOS)}
-                >
-                  All
-                </a>
+                />
               </li>
               <li>
-                <a
+                <FilterButton
                   href="#/active"
-                  className=""
+                  text="Active"
+                  buttonType= {ButtonTypes.primary}
                   onClick={() => setFilter(ACTIVE_TODOS)}
-                >
-                  Active
-                </a>
+                />
+
               </li>
               <li>
-                <a
+                <FilterButton
                   href="#/completed"
-                  className=""
+                  text="Completed"
+                  buttonType= {ButtonTypes.secondary}
                   onClick={() => setFilter(COMPLETED_TODOS)}
-                >
-                  Completed
-                </a>
+                />
+
               </li>
             </ul>
             <button className="clear-completed" onClick={onClearCompleted}>

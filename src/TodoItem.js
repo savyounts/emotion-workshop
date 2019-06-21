@@ -1,5 +1,17 @@
 import React, { useRef, useState } from 'react'
+import styled from '@emotion/styled'
+import {css} from '@emotion/core'
 
+const baseFontStyles = css`
+  font-size: 24px;
+  font-weight: 500;
+`
+
+const TodoItemContainer = styled.li`
+${baseFontStyles}
+position: relative;
+border-bottom: 1px solid #ededed;
+`
 function TodoItem({
   todo,
   todo: { completed, text },
@@ -29,7 +41,7 @@ function TodoItem({
   }
 
   return (
-    <li className={classNames.join(' ')}>
+    <TodoItemContainer>
       <div className="view">
         <input
           className="toggle"
@@ -48,7 +60,7 @@ function TodoItem({
         onChange={onChange}
         onBlur={onBlur}
       />
-    </li>
+    </TodoItemContainer>
   )
 }
 
